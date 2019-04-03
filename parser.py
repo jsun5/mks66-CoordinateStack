@@ -156,19 +156,16 @@ def parse_file( fname, edges, polygons, csystems, screen, color ):
             matrix_mult(t, csystems[0])
 
         elif line == 'display' or line == 'save':
-            clear_screen(screen)
-            draw_lines(edges, screen, color)
-            draw_polygons(polygons, screen, color)
-
             if line == 'display':
                 display(screen)
             else:
                 save_extension(screen, args[0])
 
-            elif line == 'push':
-                copy = [a[:] for a in csystems[0]]
-                csystems.insert(0,copy)
+        elif line == 'push':
+            copy = [a[:] for a in csystems[0]]
+            csystems.insert(0,copy)
             
-            elif line == 'pop':
-                csystems.pop(0)
+        elif line == 'pop':
+            csystems.pop(0)
+
         c+= 1
